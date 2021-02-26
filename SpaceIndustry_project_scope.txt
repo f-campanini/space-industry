@@ -1,0 +1,17 @@
+The project is to have a website called spaceindustry.
+It will act as:
+- news collector, scraping website from the major Space industries in the UK (and following rest of the World)
+- by registering, the user will be able to customise the sources of interest and it will receive email every time there is an update
+- a calendar will show the next events (rocket lunches...)
+- job posts from the main space industries will be also available
+
+Requisites:
+django 3.1.7
+python  3.8
+requests
+bs4
+lxml
+celery
+rabbitmq   --> queue manager similar to redis
+
+sudo apt-get install rabbitmq-server -y --fix-missing
