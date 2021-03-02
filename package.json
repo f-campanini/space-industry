@@ -1,0 +1,22 @@
+{
+  "name": "project_spaceindustry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f-campanini/space-industry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/f-campanini/space-industry/issues"
+  },
+  "homepage": "https://github.com/f-campanini/space-industry#readme",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}

@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # custom
     'scraping.apps.ScrapingConfig', #new
+    'frontend', # this is the ... frontend
     
     # default    
     'django.contrib.admin',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_celery_results',
+    'rest_framework', # allows react to talk with django
 ]
 
 MIDDLEWARE = [

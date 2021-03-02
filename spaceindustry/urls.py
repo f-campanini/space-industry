@@ -21,4 +21,6 @@ from .views import HomePageView # new
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'), # homepage
     path('admin/', admin.site.urls),
+    path('', include('scraping.urls')),
+    path('', include('frontend.urls')),
 ]
