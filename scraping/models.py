@@ -4,6 +4,7 @@ class Source(models.Model):
     name = models.CharField(max_length=30, default="Default Source", blank=True, null=True)
     link = models.CharField(max_length=2083, default="", unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         """Return a string representation of the Model."""

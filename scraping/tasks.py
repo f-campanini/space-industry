@@ -20,39 +20,35 @@ logger = get_task_logger(__name__)
 #)
 @shared_task
 def run_scraper():
-    article_list = []
     try:
         print('Starting the scraping tool')
 
-        r = requests.get('https://news.ycombinator.com/rss')
-        soup = BeautifulSoup(r.content, features='xml')
+        # retrieve an object for the sources
+        # the object is a list and each item is a record in the database
+        source_obj = Source.objects.all()
+        
+        for source_site in source_obj:
+            if source_site.active:
+                r = requests.get(source_site.link)
+                soup = BeautifulSoup(r.content, features='xml')
 
-        articles = soup.findAll('item')
+                articles = soup.findAll('item')
     
-        for a in articles:
-            title = a.find('title').text
-            link = a.find('link').text
-            published_wrong = a.find('pubDate').text
-            published = datetime.strptime(published_wrong, '%a, %d %b %Y %H:%M:%S %z')
-            article = {
-                'title': title,
-                'link': link,
-                'published': published,
-                'source': 'HackerNews RSS'
-            }
-
-            article_list.append(article)
-            try:
-                source_obj = Source.objects.all()
-                News.objects.create(
-                    title = article['title'],
-                    link = article['link'],
-                    published = article['published'],
-                    source = Source.objects.all()[0]
-                )
-            except Exception as e:
-                print(e)
-                continue
+                for a in articles:
+                    title = a.find('title').text
+                    link = a.find('link').text
+                    published_wrong = a.find('pubDate').text
+                    published = datetime.strptime(published_wrong, '%a, %d %b %Y %H:%M:%S %z')
+                    try:
+                        News.objects.create(
+                            title = title,
+                            link = link,
+                            published = published,
+                            source = source_site
+                        )
+                    except Exception as e:
+                        print(e)
+                        continue
                         
         print('Finished scraping the articles')
     except Exception as e:
