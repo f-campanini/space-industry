@@ -13,12 +13,13 @@ from .models import News, Source
 logger = get_task_logger(__name__)
 
 # scraping function
-@periodic_task(
-    run_every=(crontab(minute='*/2')),
-    name="task_hackernews_rss",
-    ignore_result=True
-)
-def hackernews_rss():
+#@periodic_task(
+#    run_every=(crontab(minute='*/2')),
+#    name="task_hackernews_rss",
+#    ignore_result=True
+#)
+@shared_task
+def run_scraper():
     article_list = []
     try:
         print('Starting the scraping tool')
