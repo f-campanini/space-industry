@@ -16,7 +16,6 @@ from celery.schedules import crontab
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -34,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # custom
     'scraping.apps.ScrapingConfig', #new
-    'frontend', # this is the ... frontend
     
     # default    
     'django.contrib.admin',
@@ -140,3 +138,4 @@ CELERY_BEAT_SCHEDULE = {
         "schedule": crontab(minute="*/2"),
     },
 }
+

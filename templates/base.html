@@ -4,36 +4,11 @@
 <html>
     <head>
         <meta charset="utf-8">
-            <title>{% block title %}Django Web Scraping Example  
-                   {% endblock title %}</title>
+            <title>{% block title %}Space Industry{% endblock title %}</title>
     </head>
     <body>
-        <div class="container">
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">link</th>
-                    <th scope="col">Published</th>
-                    <th scope="col">Created At</th>
-                    <th scope="col">Updated At</th>
-                    <th scope="col">Source</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for article in articles %}
-                        <tr>
-                        <td>{{article.title}}</td>
-                        <td>{{article.link}}</td>
-                        <td>{{article.published}}</td> 
-                        <td>{{article.created_at}}</td>
-                        <td>{{article.updated_at}}</td>
-                        <td>{{article.source}}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>   
-        </div>
+        {% block content %}
+        {% endblock content %}
     </body>
 </html>
 

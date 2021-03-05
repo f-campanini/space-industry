@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 from .views import HomePageView # new
+from scraping import views
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'), # homepage
+    path('', views.home , name='home'), # homepage
+    path('source/<int:source_id>/', views.news_bysource, name="news_by_source"),
     path('admin/', admin.site.urls),
-    path('', include('scraping.urls')),
-    path('', include('frontend.urls')),
 ]
