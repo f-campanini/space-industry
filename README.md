@@ -5,7 +5,7 @@ The backend use RabbitMQ and Celery workers to handle the periodic tasks
 
 Database is based on SQLite3 but can be replaced with postgresql or other
 
-Install.
+Development Install.
 
 1. clone the repository (git clone https://....)
 2. prepare a virtual environment with python 3.8 or above
@@ -25,3 +25,13 @@ Execute the project.
 Enjoy.
 
 Open the web browser and connect to: http://127.0.0.1:8000/
+
+
+Production Deployment.
+
+Django / Python provide a webserver running but it is not ideal for production.
+In our production environment we use nginx as a proxy service through unix.socket gunicorn.
+Gunicorn workers are connected to django.
+
+This all setup requires some attention and this readme does not intend to provide the recommendation about this. We suggest to review the following articles as really well written:
+https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
