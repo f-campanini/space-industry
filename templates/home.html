@@ -1,1 +1,32 @@
-home
+{% extends 'base.html' %}
+
+{% block content %}
+<main role="main">
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Space Industry</h1>
+        <p>Welcome to Space Industry. We are living a second Era in Space Exploration, driven by multiple factors including new technologies and policies.
+           Space Industry is a directory were you can find the most updated news from multiple accredited sources.
+           We also provide metrics and analytics and much more to come.
+        </p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="row">
+        {% for source in sources %}
+
+        <div class="col-md-4">
+          <h2>{{ source.name }}</h2>
+          <p>{{ source.link }}</p>
+          <p><a class="btn btn-secondary" href="#" role="button">{{ source.link }} &raquo;</a></p>
+        </div>
+
+        {% endfor %}
+      </div>
+      <hr>
+    </div> <!-- /container -->
+  
+  </main>
+{% endblock content %}

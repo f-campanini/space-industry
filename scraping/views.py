@@ -4,7 +4,8 @@ from django.http import Http404
 
 def home(request):
     news = News.objects.all()
-    return render(request, 'home.html', { 'news':news, })
+    sources = Source.objects.all()
+    return render(request, 'home.html', { 'news':news, 'sources':sources ,})
 
 def news_bysource(request, source_id):
     news = News.objects.filter(source=source_id)

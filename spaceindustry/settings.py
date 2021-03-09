@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # custom
-    'scraping.apps.ScrapingConfig', #new
+    'scraping.apps.ScrapingConfig',
     
     # default    
     'django.contrib.admin',
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'spaceindustry.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'], # new
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,10 +122,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# Media files (Images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR
+
 # celery
 CELERY_BROKER_URL = 'amqp://localhost:5672'
 CELERY_RESULT_BACKEND = 'amqp://localhost:5672'
@@ -139,4 +142,3 @@ CELERY_BEAT_SCHEDULE = {
         "schedule": crontab(minute="*/2"),
     },
 }
-

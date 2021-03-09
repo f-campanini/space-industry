@@ -131,3 +131,6 @@ dmypy.json
 node_modules
 migrations
 */migrations
+
+# Added for spaceindustry
+static/

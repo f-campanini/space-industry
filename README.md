@@ -2,8 +2,9 @@
 
 It is a web application based on Django
 The backend use RabbitMQ and Celery workers to handle the periodic tasks
+The frontend uses getbootstrap framework version 4.6 from getbootstrap.bom
 
-Database is based on SQLite3 but can be replaced with postgresql or other
+Database is based on SQLite3 but can be replaced in production with postgresql or other
 
 Install.
 
