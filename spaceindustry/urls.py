@@ -9,6 +9,7 @@ urlpatterns = [
     path('sources/<int:source_id>/', views.news_bysource, name="news_by_source"),
     path('admin/', admin.site.urls),
     path('metrics/word_cloud/', views.display_wordcloud, name="word_cloud"),
+    path('search/', views.index, name="index"),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
