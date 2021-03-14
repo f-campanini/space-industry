@@ -13,7 +13,7 @@ from .metrics import run_wordcloud
 
 def home(request):
     news = News.objects.all()
-    sources = Source.objects.all()
+    sources = Source.objects.filter(active=1)
     return render(request, 'home.html', {'news':news, 'sources':sources,})
 
 def news_bysource(request, source_id):

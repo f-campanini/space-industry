@@ -26,7 +26,7 @@ def run_scraper():
                 r = requests.get(source_site.link)
                 soup = BeautifulSoup(r.content, features='xml')
 
-                print('Start scraping source {} - id - {}'.format(source_site.name, source_site.id))
+                print('Start scraping source {} - id - {}'.format(source_site.link, source_site.id))
 
                 articles = soup.findAll('item')
     
