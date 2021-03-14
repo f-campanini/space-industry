@@ -18,3 +18,8 @@ class HomePageView(generic.ListView):
         output = News()
         return render('home.html', {'output': output})
 
+def handler404(request, *args, **argv):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
