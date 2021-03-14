@@ -20,7 +20,7 @@
         <div class="col-md-4">
           <h2>{{ source.name }}</h2>
           <p>{{ source.link }}</p>
-          <p><a class="btn btn-secondary" href="#" role="button">{{ source.link }} &raquo;</a></p>
+          <p><a class="btn btn-secondary" href="{% url 'news_by_source' source.id %}" role="button">{{ source.link }} &raquo;</a></p>
         </div>
 
         {% endfor %}
