@@ -12,12 +12,6 @@ from .models import News, Source
 
 logger = get_task_logger(__name__)
 
-# scraping function
-#@periodic_task(
-#    run_every=(crontab(minute='*/2')),
-#    name="task_hackernews_rss",
-#    ignore_result=True
-#)
 @shared_task
 def run_scraper():
     try:
@@ -31,6 +25,8 @@ def run_scraper():
             if source_site.active:
                 r = requests.get(source_site.link)
                 soup = BeautifulSoup(r.content, features='xml')
+
+                print('Start scraping source {} - id - {}'.format(source_site.name, source_site.id))
 
                 articles = soup.findAll('item')
     
@@ -49,7 +45,9 @@ def run_scraper():
                     except Exception as e:
                         print(e)
                         continue
-                        
+
+                print('Finished scraping source {}'.format(source_site.name))
+
         print('Finished scraping the articles')
     except Exception as e:
         print('The scraping job failed. See exception:')
