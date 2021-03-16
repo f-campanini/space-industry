@@ -14,11 +14,12 @@ logger = get_task_logger(__name__)
 
 @shared_task
 def run_scraper():
+    '''
+    Parses all the sources, check for new articles and the article to the database
+    '''
     try:
         print('Starting the scraping tool')
 
-        # retrieve an object for the sources
-        # the object is a list and each item is a record in the database
         source_obj = Source.objects.all()
         
         for source_site in source_obj:
@@ -32,6 +33,13 @@ def run_scraper():
     
                 for a in articles:
                     title = a.find('title').text
+
+                    # check if the article is already in the database
+                    # if it is in the DB, skip the article
+                    # an improvement will be to compare the timestamp
+                    if News.object.filter(id=source_site.id, title=title):
+                        continue
+
                     link = a.find('link').text
                     published_wrong = a.find('pubDate').text
                     published = datetime.strptime(published_wrong, '%a, %d %b %Y %H:%M:%S %z')
