@@ -37,7 +37,7 @@ def run_scraper():
                     # check if the article is already in the database
                     # if it is in the DB, skip the article
                     # an improvement will be to compare the timestamp
-                    if News.object.filter(id=source_site.id, title=title):
+                    if News.objects.filter(id=source_site.id, title=title):
                         continue
 
                     link = a.find('link').text
