@@ -33,14 +33,17 @@ def run_scraper():
     
                 for a in articles:
                     title = a.find('title').text
+                    link = a.find('link').text
 
                     # check if the article is already in the database
                     # if it is in the DB, skip the article
                     # an improvement will be to compare the timestamp
-                    if News.objects.filter(id=source_site.id, title=title):
-                        continue
+                    try:
+                        if News.objects.get(link=link):
+                            continue
+                    except News.DoesNotExist:
+                        print("New article found {}".format(link))
 
-                    link = a.find('link').text
                     published_wrong = a.find('pubDate').text
                     published = datetime.strptime(published_wrong, '%a, %d %b %Y %H:%M:%S %z')
                     try:
