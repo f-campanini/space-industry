@@ -8,10 +8,6 @@ import matplotlib.pyplot as plt
 # to import dataset from django queryset
 from django_pandas.io import read_frame
 
-import requests
-from datetime import datetime
-from celery import shared_task
-from celery.task.schedules import crontab
 from celery.utils.log import get_task_logger
 from .models import News, Source
 

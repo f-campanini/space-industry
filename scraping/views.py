@@ -17,7 +17,7 @@ def home(request):
     return render(request, 'home.html', {'news':news, 'sources':sources,})
 
 def news_bysource(request, source_id):
-    news = News.objects.filter(source=source_id).order_by('updated_at')
+    news = News.objects.filter(source=source_id).order_by('-updated_at')
     if news.count() == 0:
         raise Http404("Source not found")
     return render(request, 'news_by_source.html', {'source': news[0].source, 'news': news,})
