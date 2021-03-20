@@ -12,9 +12,8 @@ import base64
 from .metrics import run_wordcloud
 
 def home(request):
-    news = News.objects.all()
     sources = Source.objects.filter(active=1)
-    return render(request, 'home.html', {'news':news, 'sources':sources,})
+    return render(request, 'home.html', {'sources':sources,})
 
 def news_bysource(request, source_id):
     news = News.objects.filter(source=source_id).order_by('-updated_at')
@@ -23,12 +22,10 @@ def news_bysource(request, source_id):
     return render(request, 'news_by_source.html', {'source': news[0].source, 'news': news,})
 
 def display_wordcloud(request):
-    plt = run_wordcloud()
-    buf = BytesIO()
-    plt.savefig(buf, format='png', dpi=200)
-    image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
-    buf.close()
-    return render(request, 'word_cloud.html', { 'image': image_base64},)
+    with open('media/wordcloud.png', 'rb') as f_image:
+        image = f_image.read()
+
+    return render(request, 'word_cloud.html', { 'image': base64.b64encode(image).decode('utf-8')},)
 
 def index(request):
     '''

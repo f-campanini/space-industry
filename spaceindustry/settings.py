@@ -139,6 +139,10 @@ CELERY_TIMEZONE = 'UTC'
 CELERY_BEAT_SCHEDULE = {
     "execute_scraping": {
         "task": "scraping.tasks.run_scraper",
-        "schedule": crontab(minute="*/2"),
+        "schedule": crontab(minute="*/3"),
     },
+    "execute_metrics": {
+        "task": "scraping.metrics.run_wordcloud",
+        "schedule": crontab(minute="*/3"),
+    },    
 }
