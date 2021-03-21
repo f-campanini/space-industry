@@ -14,6 +14,9 @@ Development Install.
 4. run pip install -r requirements.txt to install all the required python libraries
 5. eventually run the migrations (python3 manage.py makemigrations && python3 manage.py migrations)
 6. install RabbitMQ
+7. open a python shell within the venv and install the nltk data:
+import nltk
+nltk.download("stopwords")
 
 Execute the project.
 

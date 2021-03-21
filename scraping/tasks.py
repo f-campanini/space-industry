@@ -4,13 +4,10 @@ from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 import lxml
-from celery import shared_task
-from celery.task.schedules import crontab
-from celery.decorators import periodic_task
-from celery.utils.log import get_task_logger
-from .models import News, Source
 
-logger = get_task_logger(__name__)
+# standard library
+from celery import shared_task
+from .models import News, Source
 
 @shared_task
 def run_scraper():
@@ -63,4 +60,3 @@ def run_scraper():
     except Exception as e:
         print('The scraping job failed. See exception:')
         print(e)
-

@@ -6,7 +6,8 @@
     <div class="jumbotron">
       <div class="container">
         <h1 class="display-3">Space Industry</h1>
-        <p>Welcome to Space Industry. We are living a second Era in Space Exploration, driven by multiple factors including new technologies and policies.
+        <p>Welcome to Space Industry. We are living a second era in Space Exploration, driven by multiple factors
+           including new technologies and policies.
            Space Industry is a directory were you can find the most updated news from multiple accredited sources.
            We also provide metrics and analytics and much more to come.
         </p>
@@ -16,13 +17,10 @@
     <div class="container">
       <div class="row">
         {% for source in sources %}
-
-        <div class="col-md-4">
-          <h2>{{ source.name }}</h2>
-          <p>{{ source.link }}</p>
-          <p><a class="btn btn-secondary" href="{% url 'news_by_source' source.id %}" role="button">{{ source.link }} &raquo;</a></p>
-        </div>
-
+          <div class="col-md-4">
+            <h2><a class="btn btn-secondary" href="{% url 'news_by_source' source.id %}" role="button">{{ source.name }}</h2> &raquo;</a>
+            <p>Original source URL: {{ source.link }} &raquo;</p>
+          </div>
         {% endfor %}
       </div>
       <hr>
