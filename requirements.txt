@@ -5,3 +5,8 @@ django-celery-results==2.0.1
 django-rest-knox==4.1.0
 djangorestframework==3.12.2
 urllib3==1.26.3
+nltk==3.5
+django-pandas==0.6.4
+wordcloud==1.8.1
+requests==2.25.1
+matplotlib==3.3.4
