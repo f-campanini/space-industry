@@ -7,7 +7,7 @@ from scraping import views
 urlpatterns = [
     path('', views.home , name='home'), # homepage
     path('sources/<int:source_id>/', views.news_bysource, name="news_by_source"),
-    path('admin/', admin.site.urls),
+#    path('admin/', admin.site.urls),
     path('metrics/word_cloud/', views.display_wordcloud, name="word_cloud"),
     path('search/', views.index, name="index"),
     path('tweets/', views.tweet_list, name='tweets')

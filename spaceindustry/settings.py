@@ -5,7 +5,6 @@ import os
 
 parser = configparser.ConfigParser()
 parser.read("config.ini")
-
 DEBUG = parser.get('settings', 'DEBUG')
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = parser.get('settings', 'SECRET_KEY')
