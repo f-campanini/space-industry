@@ -5,3 +5,5 @@ django-celery-results==2.0.1
 django-rest-knox==4.1.0
 djangorestframework==3.12.2
 urllib3==1.26.3
+tweetpy==3.10.0
+python-decouple==3.4.0

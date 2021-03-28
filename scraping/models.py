@@ -22,3 +22,13 @@ class News(models.Model):
     def __str_(self):
         """Return a string representation of the model."""
         return f"{self.title[:50]}..."
+
+class Tweet(models.Model):
+    tweet_id = models.IntegerField()
+    txt = models.TextField(default='')
+    published_date = models.DateTimeField(blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        """Return a string representation of the model."""
+        return self.tweet_text

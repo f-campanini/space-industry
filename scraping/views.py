@@ -1,4 +1,4 @@
-from .models import News, Source
+from .models import News, Source, Tweet
 from django.shortcuts import render
 from django.http import Http404
 from django.db.models import Q
@@ -26,6 +26,15 @@ def display_wordcloud(request):
         image = f_image.read()
 
     return render(request, 'word_cloud.html', { 'image': base64.b64encode(image).decode('utf-8')},)
+
+def tweet_list(request):
+    """
+    Allows editing the tweets to be published
+    """
+    tweets = Tweet.objects.order_by('-published_date')
+    if tweets.count() == 0:
+        raise Http404("Tweets not found")
+    return render(request, 'tweet_list.html', {'tweets': tweets})
 
 def index(request):
     '''
