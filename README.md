@@ -17,6 +17,7 @@ Development Install.
 7. open a python shell within the venv and install the nltk data:
 import nltk
 nltk.download("stopwords")
+8. edit the file config.ini and add your variable values in particular change the security_key and add twitter API-key values
 
 Execute the project.
 
