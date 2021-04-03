@@ -62,7 +62,7 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" aria-disabled="true">Authors</a>
+            <a class="nav-link" href="{% url 'author' %}" aria-disabled="false">Author</a>
         </li>
         <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Login</a>
@@ -82,6 +82,7 @@
     </div>
     </nav>
     <p></p>
+
     {% block content %}
     {% endblock content %}
 
