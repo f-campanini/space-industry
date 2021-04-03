@@ -15,6 +15,9 @@ def home(request):
     sources = Source.objects.filter(active=1)
     return render(request, 'home.html', {'sources':sources,})
 
+def author(request):
+    return render(request, 'author.html')
+
 def news_bysource(request, source_id):
     news = News.objects.filter(source=source_id).order_by('-updated_at')
     if news.count() == 0:
