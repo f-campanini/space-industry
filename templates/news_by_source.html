@@ -1,15 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="jumbotron">
-        <div class="container">
-          <h3 class="display-3">{{ source }}</h3>
-          {% for item in news %}
-            {{ item.published }} - <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
-          <p></p>
-          {% endfor %}
-        </div>
-    </div>
+  <div class="jumbotron">
+      <div class="container">
+        <h3 class="display-3">{{ source }}</h3>
+        {% for item in news %}
+          {{ item.published }} - <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+        <p></p>
+        {% endfor %}
+      </div>
+  </div>
 
+  {% if news.has_other_pages %}
+  <ul class="pagination">
+    {% if news.has_previous %}
+      <li><a href="?page={{ news.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in news.paginator.page_range %}
+      {% if news.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if news.has_next %}
+      <li><a href="?page={{ news.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+  {% endif %}
 
 {% endblock content %}
