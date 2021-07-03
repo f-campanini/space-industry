@@ -1,15 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="jumbotron">
-        <div class="container">
-          <h3 class="display-3">Space Industry Tweets</h3>
-          {% for item in tweets %}
-            {{ item.published_date }} - {{ item.txt }}</a>
-            <p></p>
-          {% endfor %}  
-        </div>
-    </div>
+  <div class="jumbotron">
+      <div class="container">
+        <h3 class="display-3">Space Industry Tweets</h3>
+        {% for item in tweets %}
+          {{ item.published_date }} - {{ item.txt }}</a>
+          <p></p>
+        {% endfor %}  
+      </div>
+  </div>
 
+  {% if tweets.has_other_pages %}
+  <ul class="pagination">
+    {% if tweets.has_previous %}
+      <li><a href="?page={{ tweets.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in tweets.paginator.page_range %}
+      {% if tweets.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if tweets.has_next %}
+      <li><a href="?page={{ tweets.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+  {% endif %}
 
 {% endblock content %}
